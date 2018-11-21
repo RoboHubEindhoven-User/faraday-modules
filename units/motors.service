@@ -1,0 +1,11 @@
+[Unit]
+Description=Network Motor Driver
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+ExecStartPre=/sbin/insmod /usr/local/drivers/kmodule_PWM.ko
+ExecStart=/usr/bin/python2.7 /home/snickerdoodle/motors.py
+
+[Install]
+WantedBy=multi-user.target
